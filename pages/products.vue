@@ -1,251 +1,264 @@
 <template>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="mb-10 opacity-0 animate-fade-in">
-      <div class="text-xs text-slate-400 mb-2 flex items-center gap-2">
-        <span>{{ lang === "id" ? "Beranda" : "Home" }}</span>
-        <span>&gt;</span>
-        <span>{{ lang === "id" ? "Produk" : "Products" }}</span>
-        <span>&gt;</span>
-        <span
-          class="text-emerald-600 dark:text-emerald-400 font-semibold capitalize bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded"
+  <div
+    class="bg-slate-50 dark:bg-slate-950 transition-colors duration-300 min-h-screen py-12"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 opacity-0 animate-fade-in">
+        <div
+          class="text-xs text-slate-400 dark:text-slate-500 mb-2 flex items-center gap-2"
+        >
+          <span>{{ lang === "id" ? "Beranda" : "Home" }}</span>
+          <span>&gt;</span>
+          <span>{{ lang === "id" ? "Produk" : "Products" }}</span>
+          <span>&gt;</span>
+          <span
+            class="text-emerald-600 dark:text-emerald-400 font-semibold capitalize bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded"
+          >
+            {{ getCategoryLabel(selectedCategory) }}
+          </span>
+        </div>
+        <h1
+          class="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 dark:text-white capitalize transition-colors"
         >
           {{ getCategoryLabel(selectedCategory) }}
-        </span>
-      </div>
-      <h1
-        class="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 dark:text-white capitalize"
-      >
-        {{ getCategoryLabel(selectedCategory) }}
-      </h1>
-      <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 max-w-2xl">
-        {{
-          lang === "id"
-            ? "Koleksi lengkap nutrisi Herbalife orisinal untuk mendukung program kebugaran, pengelolaan berat badan, dan hidrasi harian Anda."
-            : "Complete collection of original Herbalife nutrition to support your fitness, weight management, and daily hydration goals."
-        }}
-      </p>
-    </div>
-
-    <div class="grid lg:grid-cols-4 gap-8 items-start mt-6">
-      <div
-        class="bg-white dark:bg-slate-800 p-6 rounded-3xl border border-slate-100 dark:border-slate-700/60 shadow-sm space-y-6 lg:sticky lg:top-24"
-      >
-        <div
-          class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-4"
-        >
-          <span
-            class="font-bold text-sm flex items-center gap-2 text-slate-800 dark:text-slate-200"
-          >
-            <span>📋</span> {{ lang === "id" ? "Filter Produk" : "Filters" }}
-          </span>
-          <button
-            v-if="
-              selectedFlavors.length > 0 ||
-              selectedSizes.length > 0 ||
-              searchQuery
-            "
-            @click="resetFilters"
-            class="text-[11px] text-emerald-600 dark:text-emerald-400 hover:underline font-semibold"
-          >
-            Reset All
-          </button>
-        </div>
-
-        <div>
-          <h4
-            class="font-bold text-xs uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3"
-          >
-            {{ lang === "id" ? "Pilihan Rasa" : "Flavors" }}
-          </h4>
-          <div class="space-y-2.5">
-            <label
-              v-for="flavor in availableFlavors"
-              :key="flavor"
-              class="flex items-center gap-2.5 text-xs text-slate-600 dark:text-slate-300 cursor-pointer group"
-            >
-              <input
-                type="checkbox"
-                :value="flavor"
-                v-model="selectedFlavors"
-                class="w-4 h-4 text-emerald-600 bg-slate-100 border-slate-300 rounded focus:ring-emerald-500 accent-emerald-600 transition"
-              />
-              <span
-                class="group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition"
-                >{{ flavor }}</span
-              >
-            </label>
-          </div>
-        </div>
-
-        <div>
-          <h4
-            class="font-bold text-xs uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3"
-          >
-            {{ lang === "id" ? "Ukuran / Kemasan" : "Size / Pack" }}
-          </h4>
-          <div class="space-y-2.5">
-            <label
-              v-for="size in availableSizes"
-              :key="size"
-              class="flex items-center gap-2.5 text-xs text-slate-600 dark:text-slate-300 cursor-pointer group"
-            >
-              <input
-                type="checkbox"
-                :value="size"
-                v-model="selectedSizes"
-                class="w-4 h-4 text-emerald-600 bg-slate-100 border-slate-300 rounded focus:ring-emerald-500 accent-emerald-600 transition"
-              />
-              <span
-                class="group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition"
-                >{{ size }}</span
-              >
-            </label>
-          </div>
-        </div>
+        </h1>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 max-w-2xl">
+          {{
+            lang === "id"
+              ? "Koleksi lengkap nutrisi Herbalife orisinal untuk mendukung program kebugaran, pengelolaan berat badan, dan hidrasi harian Anda."
+              : "Complete collection of original Herbalife nutrition to support your fitness, weight management, and daily hydration goals."
+          }}
+        </p>
       </div>
 
-      <div class="lg:col-span-3 space-y-6">
+      <div class="grid lg:grid-cols-4 gap-8 items-start mt-6">
         <div
-          class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-50 dark:bg-slate-800/40 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/60"
-        >
-          <span class="text-xs font-medium text-slate-500 dark:text-slate-400">
-            {{ filteredProducts.length }}
-            {{ lang === "id" ? "Produk ditemukan" : "Products found" }}
-          </span>
-          <div class="relative w-full sm:w-64">
-            <input
-              v-model="searchQuery"
-              type="text"
-              :placeholder="
-                lang === 'id' ? 'Cari nama produk...' : 'Search product...'
-              "
-              class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 pl-3 pr-8 py-2 rounded-xl text-xs outline-none focus:ring-2 focus:ring-emerald-500 dark:focus:ring-emerald-400 transition shadow-sm"
-            />
-            <span class="absolute right-2.5 top-2.5 text-slate-400 text-xs"
-              >🔍</span
-            >
-          </div>
-        </div>
-
-        <div
-          v-if="filteredProducts.length > 0"
-          class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm space-y-6 lg:sticky lg:top-24 transition-colors duration-300"
         >
           <div
-            v-for="prod in filteredProducts"
-            :key="prod.id"
-            class="bg-white dark:bg-slate-800 rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-800/70 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between group"
+            class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4"
           >
-            <div class="p-5">
-              <div
-                class="w-full aspect-square bg-gradient-to-b from-slate-50 to-slate-100/50 dark:from-slate-700/30 dark:to-slate-800/30 rounded-2xl mb-4 flex items-center justify-center text-6xl relative overflow-hidden shadow-inner"
-              >
-                {{ prod.icon }}
-
-                <span
-                  :class="
-                    prod.badge === 'New' ? 'bg-blue-600' : 'bg-emerald-600'
-                  "
-                  class="absolute top-3 left-3 text-[9px] text-white font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider shadow animate-pulse"
-                >
-                  {{ prod.badge }}
-                </span>
-
-                <span
-                  class="absolute bottom-3 right-3 text-[10px] font-bold bg-white/90 dark:bg-slate-900/90 backdrop-blur px-2.5 py-1 rounded-xl text-slate-600 dark:text-slate-300 border border-slate-100 dark:border-slate-700 shadow-sm"
-                >
-                  ⚖️ {{ prod.weight }}
-                </span>
-              </div>
-
-              <span
-                class="text-[10px] font-black tracking-widest uppercase text-emerald-600 dark:text-emerald-400"
-              >
-                {{ lang === "id" ? prod.catNameId : prod.catNameEn }}
-              </span>
-
-              <h3
-                class="text-base font-black mt-1.5 text-slate-800 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition duration-200"
-              >
-                {{ prod.name }}
-              </h3>
-              <p
-                class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed line-clamp-2 h-8"
-              >
-                {{ lang === "id" ? prod.descId : prod.descEn }}
-              </p>
-
-              <div
-                class="mt-4 pt-3 border-t border-slate-50 dark:border-slate-700/50"
-              >
-                <span
-                  class="block text-[10px] uppercase tracking-wider text-slate-400 font-bold mb-1.5"
-                >
-                  {{ lang === "id" ? "Varian Rasa:" : "Flavor Profile:" }}
-                </span>
-                <div class="flex flex-wrap gap-1">
-                  <span
-                    v-for="flv in prod.flavors"
-                    :key="flv"
-                    class="text-[10px] bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 px-2 py-0.5 rounded-md font-bold"
-                  >
-                    ✨ {{ flv }}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="p-5 pt-0 mt-2 flex items-center justify-between border-t border-slate-50 dark:border-slate-700/40 pt-4 bg-slate-50/50 dark:bg-slate-800/30"
+            <span
+              class="font-bold text-sm flex items-center gap-2 text-slate-800 dark:text-slate-200"
             >
-              <div>
-                <span
-                  class="block text-[9px] text-slate-400 uppercase font-bold tracking-wider"
-                  >{{ lang === "id" ? "Harga Resmi" : "Retail Price" }}</span
-                >
-                <span
-                  class="font-black text-lg text-emerald-600 dark:text-emerald-400 tracking-tight"
-                  >{{ prod.price }}</span
-                >
-              </div>
-              <a
-                :href="`https://wa.me/628123456789?text=Halo%20Seroja%20Nutrition,%20saya%20tertarik%20ingin%20konsultasi%20dan%20order%20produk%20${encodeURIComponent(prod.name)}`"
-                target="_blank"
-                class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-md shadow-emerald-600/10 flex items-center gap-1"
+              <span>📋</span> {{ lang === "id" ? "Filter Produk" : "Filters" }}
+            </span>
+            <button
+              v-if="
+                selectedFlavors.length > 0 ||
+                selectedSizes.length > 0 ||
+                searchQuery
+              "
+              @click="resetFilters"
+              class="text-[11px] text-emerald-600 dark:text-emerald-400 hover:underline font-semibold"
+            >
+              Reset All
+            </button>
+          </div>
+
+          <div>
+            <h4
+              class="font-bold text-xs uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3"
+            >
+              {{ lang === "id" ? "Pilihan Rasa" : "Flavors" }}
+            </h4>
+            <div class="space-y-2.5">
+              <label
+                v-for="flavor in availableFlavors"
+                :key="flavor"
+                class="flex items-center gap-2.5 text-xs text-slate-600 dark:text-slate-300 cursor-pointer group"
               >
-                <span>🥤</span> {{ lang === "id" ? "Beli" : "Order" }}
-              </a>
+                <input
+                  type="checkbox"
+                  :value="flavor"
+                  v-model="selectedFlavors"
+                  class="w-4 h-4 text-emerald-600 bg-slate-50 border-slate-200 dark:bg-slate-800 dark:border-slate-700 rounded focus:ring-emerald-500 accent-emerald-600 transition"
+                />
+                <span
+                  class="group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors"
+                  >{{ flavor }}</span
+                >
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <h4
+              class="font-bold text-xs uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3"
+            >
+              {{ lang === "id" ? "Ukuran / Kemasan" : "Size / Pack" }}
+            </h4>
+            <div class="space-y-2.5">
+              <label
+                v-for="size in availableSizes"
+                :key="size"
+                class="flex items-center gap-2.5 text-xs text-slate-600 dark:text-slate-300 cursor-pointer group"
+              >
+                <input
+                  type="checkbox"
+                  :value="size"
+                  v-model="selectedSizes"
+                  class="w-4 h-4 text-emerald-600 bg-slate-50 border-slate-200 dark:bg-slate-800 dark:border-slate-700 rounded focus:ring-emerald-500 accent-emerald-600 transition"
+                />
+                <span
+                  class="group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors"
+                  >{{ size }}</span
+                >
+              </label>
             </div>
           </div>
         </div>
 
-        <div
-          v-else
-          class="text-center py-20 bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700/60 shadow-inner"
-        >
-          <span class="text-5xl block mb-4">🍃</span>
-          <h3
-            class="text-base font-bold text-slate-700 dark:text-slate-300 mb-1"
+        <div class="lg:col-span-3 space-y-6">
+          <div
+            class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/80 shadow-sm transition-colors duration-300"
           >
-            {{
-              lang === "id"
-                ? "Tidak Ada Nutrisi yang Cocok"
-                : "No Nutrition Items Match"
-            }}
-          </h3>
-          <p class="text-xs text-slate-400 max-w-xs mx-auto">
-            {{
-              lang === "id"
-                ? "Coba ubah kombinasi checklist rasa, kemasan, atau kata kunci pencarian Anda."
-                : "Try adjusting your flavor checkmarks, package sizes, or search keywords."
-            }}
-          </p>
-          <button
-            @click="resetFilters"
-            class="mt-4 bg-slate-100 dark:bg-slate-700 hover:bg-emerald-50 dark:hover:bg-emerald-950 text-slate-700 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-400 text-xs font-bold px-4 py-2 rounded-xl transition"
+            <span
+              class="text-xs font-medium text-slate-500 dark:text-slate-400"
+            >
+              {{ filteredProducts.length }}
+              {{ lang === "id" ? "Produk ditemukan" : "Products found" }}
+            </span>
+            <div class="relative w-full sm:w-64">
+              <input
+                v-model="searchQuery"
+                type="text"
+                :placeholder="
+                  lang === 'id' ? 'Cari nama produk...' : 'Search product...'
+                "
+                class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100 pl-3 pr-8 py-2 rounded-xl text-xs outline-none focus:ring-2 focus:ring-emerald-500 dark:focus:ring-emerald-400 transition shadow-sm"
+              />
+              <span
+                class="absolute right-2.5 top-2.5 text-slate-400 dark:text-slate-500 text-xs"
+                >🔍</span
+              >
+            </div>
+          </div>
+
+          <div
+            v-if="filteredProducts.length > 0"
+            class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {{ lang === "id" ? "Bersihkan Semua Filter" : "Clear All Filters" }}
-          </button>
+            <div
+              v-for="prod in filteredProducts"
+              :key="prod.id"
+              class="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between group"
+            >
+              <div class="p-5">
+                <div
+                  class="w-full aspect-square bg-gradient-to-b from-slate-50 to-slate-100/30 dark:from-slate-800/40 dark:to-slate-900/40 rounded-2xl mb-4 flex items-center justify-center text-6xl relative overflow-hidden shadow-inner"
+                >
+                  {{ prod.icon }}
+
+                  <span
+                    :class="
+                      prod.badge === 'New' ? 'bg-blue-600' : 'bg-emerald-600'
+                    "
+                    class="absolute top-3 left-3 text-[9px] text-white font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider shadow animate-pulse"
+                  >
+                    {{ prod.badge }}
+                  </span>
+
+                  <span
+                    class="absolute bottom-3 right-3 text-[10px] font-bold bg-white/90 dark:bg-slate-800/90 backdrop-blur px-2.5 py-1 rounded-xl text-slate-600 dark:text-slate-300 border border-slate-100 dark:border-slate-700/80 shadow-sm"
+                  >
+                    ⚖️ {{ prod.weight }}
+                  </span>
+                </div>
+
+                <span
+                  class="text-[10px] font-black tracking-widest uppercase text-emerald-600 dark:text-emerald-400"
+                >
+                  {{ lang === "id" ? prod.catNameId : prod.catNameEn }}
+                </span>
+
+                <h3
+                  class="text-base font-black mt-1.5 text-slate-800 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-200"
+                >
+                  {{ prod.name }}
+                </h3>
+                <p
+                  class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed line-clamp-2 h-8"
+                >
+                  {{ lang === "id" ? prod.descId : prod.descEn }}
+                </p>
+
+                <div
+                  class="mt-4 pt-3 border-t border-slate-50 dark:border-slate-800/60"
+                >
+                  <span
+                    class="block text-[10px] uppercase tracking-wider text-slate-400 dark:text-slate-500 font-bold mb-1.5"
+                  >
+                    {{ lang === "id" ? "Varian Rasa:" : "Flavor Profile:" }}
+                  </span>
+                  <div class="flex flex-wrap gap-1">
+                    <span
+                      v-for="flv in prod.flavors"
+                      :key="flv"
+                      class="text-[10px] bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 px-2 py-0.5 rounded-md font-bold"
+                    >
+                      ✨ {{ flv }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="p-5 pt-0 mt-2 flex items-center justify-between border-t border-slate-50 dark:border-slate-800/40 pt-4 bg-slate-50/50 dark:bg-slate-900/30 transition-colors"
+              >
+                <div>
+                  <span
+                    class="block text-[9px] text-slate-400 dark:text-slate-500 uppercase font-bold tracking-wider"
+                    >{{ lang === "id" ? "Harga Resmi" : "Retail Price" }}</span
+                  >
+                  <span
+                    class="font-black text-lg text-emerald-600 dark:text-emerald-400 tracking-tight"
+                    >{{ prod.price }}</span
+                  >
+                </div>
+                <a
+                  :href="`https://wa.me/628123456789?text=Halo%20Seroja%20Nutrition,%20saya%20tertarik%20ingin%20konsultasi%20dan%20order%20produk%20${encodeURIComponent(prod.name)}`"
+                  target="_blank"
+                  class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-md shadow-emerald-600/10 flex items-center gap-1"
+                >
+                  <span>🥤</span> {{ lang === "id" ? "Beli" : "Order" }}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            v-else
+            class="text-center py-20 bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-inner transition-colors duration-300"
+          >
+            <span class="text-5xl block mb-4">🍃</span>
+            <h3
+              class="text-base font-bold text-slate-700 dark:text-slate-300 mb-1"
+            >
+              {{
+                lang === "id"
+                  ? "Tidak Ada Nutrisi yang Cocok"
+                  : "No Nutrition Items Match"
+              }}
+            </h3>
+            <p
+              class="text-xs text-slate-400 dark:text-slate-500 max-w-xs mx-auto"
+            >
+              {{
+                lang === "id"
+                  ? "Coba ubah kombinasi checklist rasa, kemasan, atau kata kunci pencarian Anda."
+                  : "Try adjusting your flavor checkmarks, package sizes, or search keywords."
+              }}
+            </p>
+            <button
+              @click="resetFilters"
+              class="mt-4 bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-950 text-slate-700 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-400 text-xs font-bold px-4 py-2 rounded-xl transition"
+            >
+              {{
+                lang === "id" ? "Bersihkan Semua Filter" : "Clear All Filters"
+              }}
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -265,7 +278,7 @@ const selectedCategory = ref("all");
 const selectedFlavors = ref([]);
 const selectedSizes = ref([]);
 
-// --- DATA SIDEBAR UTAMA (Dibuat Sinkron Otomatis dengan Varian Produk) ---
+// --- LIST DATA FILTER SIDEBAR (Sinkron 100% dengan Properti Flavors Produk) ---
 const availableFlavors = [
   "Cokelat",
   "Vanilla",
@@ -556,20 +569,13 @@ const products = [
 // --- LOGIKA FILTER MULTI-FAKTOR YANG 100% AKURAT ---
 const filteredProducts = computed(() => {
   return products.filter((prod) => {
-    // 1. Validasi Kategori Utama (dari URL / Navbar)
     const matchCategory = prod.categories.includes(selectedCategory.value);
-
-    // 2. Validasi Input Search Bar Teks
     const matchSearch = prod.name
       .toLowerCase()
       .includes(searchQuery.value.toLowerCase());
-
-    // 3. Validasi Checkbox Ukuran Kemasan
     const matchSize =
       selectedSizes.value.length === 0 ||
       selectedSizes.value.includes(prod.weight);
-
-    // 4. Validasi Checkbox Pilihan Rasa (Multi-Varian Match)
     const matchFlavor =
       selectedFlavors.value.length === 0 ||
       prod.flavors.some((f) => selectedFlavors.value.includes(f));

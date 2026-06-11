@@ -1,133 +1,124 @@
 <template>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid md:grid-cols-2 gap-12 items-center mb-24">
-      <div>
-        <span class="inline-block bg-emerald-100 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 text-xs font-semibold px-3 py-1 rounded-full mb-4">
-          {{ t.badge }}
-        </span>
-        <h1 class="text-4xl sm:text-5xl font-black tracking-tight mb-6 leading-tight">
-          {{ t.title }} <span class="text-emerald-600 dark:text-emerald-400">Herbalife Nutrition</span>
-        </h1>
-        <p class="text-lg text-slate-600 dark:text-slate-400 mb-8">
-          {{ t.subtitle }}
-        </p>
-        <div class="flex flex-wrap gap-4">
-          <NuxtLink to="/products" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-6 py-3 rounded-xl transition shadow-lg shadow-emerald-600/20">
-            {{ t.btnProducts }}
-          </NuxtLink>
-          <NuxtLink to="/location" class="border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium px-6 py-3 rounded-xl transition">
-            {{ t.btnClub }}
-          </NuxtLink>
-        </div>
-      </div>
-      <div class="relative bg-gradient-to-tr from-emerald-500 to-teal-600 rounded-3xl p-8 aspect-video flex items-center justify-center text-white shadow-2xl">
-        <div class="text-center">
-          <span class="text-6xl mb-4 block">🥤</span>
-          <h3 class="text-2xl font-bold">Seroja Nutrition Club</h3>
-          <p class="text-emerald-100 text-sm mt-1">Healthy Shake & Energy Tea</p>
-        </div>
-      </div>
+  <div class="main-wrapper min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors duration-500 overflow-hidden relative">
+    
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+      <div class="absolute -top-40 -left-40 w-96 h-96 bg-emerald-500/20 dark:bg-emerald-600/10 rounded-full blur-[128px] animate-blob transition-colors duration-500"></div>
+      <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-teal-500/15 dark:bg-teal-600/5 rounded-full blur-[128px] animate-blob animation-delay-2000 transition-colors duration-500"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-white/50 dark:bg-slate-800/10 rounded-full blur-[110px] animate-blob animation-delay-4000 transition-colors duration-500 opacity-60"></div>
     </div>
 
-    <div class="mb-24">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <h2 class="text-3xl font-black mb-3">{{ t.servicesTitle }}</h2>
-        <p class="text-slate-600 dark:text-slate-400 text-sm">{{ t.servicesSubtitle }}</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div v-for="(svc, idx) in t.services" :key="idx" class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-sm hover:border-emerald-500 dark:hover:border-emerald-400 transition-all duration-300">
-          <div class="text-4xl mb-4">{{ svc.icon }}</div>
-          <h3 class="text-xl font-bold mb-2">{{ svc.name }}</h3>
-          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-4">{{ svc.desc }}</p>
-          <span class="inline-block text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-1 rounded-md">
-            {{ svc.tag }}
-          </span>
-        </div>
-      </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32 relative z-10 py-12">
+      
+      <HomeHeroSection :lang="lang" />
+
+      <HomeWhyChooseUs :lang="lang" />
+
+      <HomeCommunityEducation :lang="lang" />
+
+      <HomeServicesPrograms :lang="lang" />
+
+      <HomeStepsToStart :lang="lang" />
+
+      <HomeSuccessStories :lang="lang" />
+
+      <HomeCtaBanner :lang="lang" />
+
     </div>
 
-    <div class="mb-24 bg-slate-100 dark:bg-slate-800/30 rounded-3xl p-8 sm:p-12">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <h2 class="text-3xl font-black mb-3">{{ t.testiTitle }}</h2>
-        <p class="text-slate-600 dark:text-slate-400 text-sm">{{ t.testiSubtitle }}</p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div v-for="(testi, idx) in t.testimonials" :key="idx" class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm flex gap-4 items-start">
-          <div class="bg-emerald-100 dark:bg-emerald-900/50 text-xl p-3 rounded-full flex-shrink-0">🔥</div>
-          <div>
-            <p class="italic text-slate-600 dark:text-slate-300 text-sm mb-4">"{| testi.quote |}"</p>
-            <h4 class="font-bold text-sm">{{ testi.name }}</h4>
-            <p class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">{{ testi.result }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <a 
+      href="https://wa.me/628123456789?text=Halo%20Coach%20Seroja,%20saya%20tertarik%20ingin%20tanya%20program%20dan%20konsultasi%20nutrisi." 
+      target="_blank"
+      class="fixed bottom-6 right-6 z-[99] bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-2xl shadow-xl shadow-[#25D366]/30 transition-all duration-300 hover:scale-110 active:scale-95 group focus:outline-none focus:ring-4 focus:ring-[#25D366]/40 flex items-center justify-center animate-bounce-soft"
+      aria-label="Chat WhatsApp Seroja"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 fill-current group-hover:rotate-12 transition-transform duration-300" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.372 5.378 0 12.013 0c3.216.012 6.237 1.27 8.508 3.542 2.27 2.274 3.523 5.301 3.523 8.514-.01 6.632-5.385 12.004-12.02 12.004-.006 0-.012 0-.018 0-1.996-.002-3.963-.5-5.717-1.446L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.417 9.867-9.849.004-2.63-1.019-5.101-2.881-6.965C16.538 1.936 14.07 .915 11.443.915 6.008.915 1.585 5.332 1.578 10.766c-.002 1.704.453 3.37 1.316 4.839l-.986 3.6 3.738-.981zm13.12-10.302c-.27-.134-1.597-.788-1.846-.878-.25-.09-.431-.136-.613.135-.182.271-.703.878-.862 1.058-.159.18-.317.202-.587.067-.27-.135-1.14-.42-2.172-1.34-0.803-.715-1.345-1.6-1.503-1.871-.159-.272-.017-.418.118-.553.122-.122.272-.317.408-.475.136-.158.181-.271.272-.453.09-.181.045-.339-.022-.475-.068-.135-.613-1.478-.84-2.02-.22-.53-.442-.458-.613-.467-.159-.008-.34-.01-.522-.01-.181 0-.476.068-.725.339-.249.271-.952.931-.952 2.27 0 1.338.975 2.63 1.111 2.81 1.14 1.514 2.508 2.31 3.9 2.87 1.055.424 1.745.344 2.404.246.736-.11 1.598-.654 1.825-1.254.226-.6.226-1.11.158-1.218-.067-.109-.248-.154-.518-.289z"/></svg>
+    </a>
 
-    <div class="grid sm:grid-cols-3 gap-8 text-center border-t border-slate-200 dark:border-slate-800 pt-12">
-      <div v-for="(stat, idx) in t.stats" :key="idx" class="p-6 bg-white dark:bg-slate-800/40 rounded-2xl border border-slate-100 dark:border-slate-800">
-        <div class="text-3xl mb-2">{{ stat.icon }}</div>
-        <div class="text-2xl font-bold mb-1">{{ stat.num }}</div>
-        <div class="text-sm text-slate-500 dark:text-slate-400">{{ stat.label }}</div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-const props = defineProps(['lang'])
+import { onMounted } from "vue";
+const props = defineProps(["lang"]);
 
-const i18n = {
-  id: {
-    badge: 'Franchise Resmi & Terpercaya',
-    title: 'Awali Hidup Sehatmu Bersama Seroja &',
-    subtitle: 'Kami menyediakan solusi nutrisi terbaik dari Herbalife untuk membantu Anda mencapai berat badan ideal, menjaga stamina, dan menjalani gaya hidup sehat terstruktur.',
-    btnProducts: 'Lihat Produk',
-    btnClub: 'Kunjungi Rumah Nutrisi',
-    servicesTitle: 'Layanan & Program Seroja',
-    servicesSubtitle: 'Bukan sekadar jual produk, kami membimbing Anda dengan program terukur demi hasil maksimal.',
-    services: [
-      { icon: '📉', name: 'Manajemen Berat Badan', desc: 'Program kustomisasi turun berat badan aman dengan pengelolaan kalori harian dan panduan meal plan Herbalife.', tag: 'Paling Populer' },
-      { icon: '📈', name: 'Menaikkan Massa Otot', desc: 'Asupan nutrisi tinggi protein untuk Anda yang ingin membangun otot serta menambah berat badan secara sehat.', tag: 'Kebugaran' },
-      { icon: '🎯', name: 'Konsultasi Kebugaran 1-on-1', desc: 'Analisis komposisi tubuh gratis (Lemak, Masa Otot, Air) langsung dibimbing oleh coach berpengalaman.', tag: 'Gratis di Club' }
-    ],
-    testiTitle: 'Kisah Sukses Konsumen kami',
-    testiSubtitle: 'Hasil nyata transformasi tubuh dari mereka yang berkomitmen penuh bersama Seroja Nutrition.',
-    testimonials: [
-      { name: 'Budi Santoso', result: 'Turun 12 Kg dalam 3 Bulan', quote: 'Stamina saya jauh lebih baik dan lingkar perut berkurang drastis berkat Shake Formula 1 setiap pagi.' },
-      { name: 'Siti Rahma', result: 'Naik 5 Kg (Massa Otot)', quote: 'Dulu kurus dan lemas, setelah ikut program gain weight Seroja tubuh jadi padat dan tidak gampang sakit.' }
-    ],
-    stats: [
-      { icon: '👥', num: '500+', label: 'Konsumen Aktif Berhasil' },
-      { icon: '⭐', num: '4.9/5', label: 'Rating Kepuasan' },
-      { icon: '🍃', num: '100%', label: 'Produk Original Asli' },
-    ]
-  },
-  en: {
-    badge: 'Official & Trusted Franchise',
-    title: 'Start Your Healthy Life with Seroja &',
-    subtitle: 'We provide top-tier nutrition solutions from Herbalife to help you achieve your ideal weight, boost energy, and maintain a structured healthy lifestyle.',
-    btnProducts: 'Browse Products',
-    btnClub: 'Visit Nutrition Club',
-    servicesTitle: 'Seroja Services & Programs',
-    servicesSubtitle: 'More than just selling products, we coach you with structured programs for the best results.',
-    services: [
-      { icon: '📉', name: 'Weight Management', desc: 'Safe, customized weight loss programs with daily calorie management and Herbalife meal plan guidelines.', tag: 'Most Popular' },
-      { icon: '📈', name: 'Lean Muscle Gain', desc: 'High-protein nutritional plans for building muscle and gaining healthy weight effectively.', tag: 'Fitness & Muscle' },
-      { icon: '🎯', name: '1-on-1 Wellness Coaching', desc: 'Complimentary body composition analysis (Fat, Muscle, Water) coached directly by professionals.', tag: 'Free at Club' }
-    ],
-    testiTitle: 'Real Success Stories',
-    testiSubtitle: 'Real body transformations from those who stayed committed with Seroja Nutrition.',
-    testimonials: [
-      { name: 'Budi Santoso', result: 'Lost 12 Kg in 3 Months', quote: 'My stamina is much better and my waistline shrunk drastically thanks to the Formula 1 Shake every morning.' },
-      { name: 'Siti Rahma', result: 'Gained 5 Kg (Muscle Mass)', quote: 'I used to feel weak and skinny. After joining the Seroja weight gain plan, my body feels firmer and healthier.' }
-    ],
-    stats: [
-      { icon: '👥', num: '500+', label: 'Successful Active Members' },
-      { icon: '⭐', num: '4.9/5', label: 'Satisfaction Rating' },
-      { icon: '🍃', num: '100%', label: 'Authentic Original Products' },
-    ]
+// Logic Intersection Observer global untuk memicu transisi scroll komponen (.scroll-animate)
+onMounted(() => {
+  if (process.client) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll(".scroll-animate").forEach((el) => {
+      observer.observe(el);
+    });
   }
-}
-const t = computed(() => i18n[props.lang])
+});
 </script>
+
+<style>
+/* --- GLOBAL STYLING UNTUK ANIMASI HALAMAN UTAMA --- */
+
+.animate-fade-in-left {
+  animation: fadeInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.animate-fade-in-right {
+  animation: fadeInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-float {
+  animation: floatingCard 4s ease-in-out infinite;
+}
+@keyframes floatingCard {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(0.5deg); }
+}
+
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease-out, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-blob {
+  animation: blobBackground 12s infinite ease-in-out;
+}
+@keyframes blobBackground {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(50px, -60px) scale(1.15); }
+  66% { transform: translate(-40px, 40px) scale(0.9); }
+}
+.animation-delay-2000 {
+  animation-delay: 2.5s;
+}
+.animation-delay-4000 {
+  animation-delay: 5s;
+}
+
+.animate-bounce-soft {
+  animation: bounceSoft 3s infinite ease-in-out;
+}
+@keyframes bounceSoft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+</style>
