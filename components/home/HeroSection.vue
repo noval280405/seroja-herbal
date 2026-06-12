@@ -29,7 +29,7 @@
           <div class="w-20 h-20 mx-auto bg-white/20 rounded-2xl backdrop-blur-md flex items-center justify-center mb-6 shadow-inner group-hover:scale-110 transition-transform duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
           </div>
-          <h3 class="text-3xl font-black tracking-tight">Seroja Nutrition Club</h3>
+          <h3 class="text-3xl font-black tracking-tight">Seroja Nutrition</h3>
           <p class="text-emerald-100 text-sm mt-2 font-medium tracking-wide bg-white/10 inline-block px-4 py-1 rounded-full backdrop-blur-xs">
             Healthy Shake & Energy Tea
           </p>
