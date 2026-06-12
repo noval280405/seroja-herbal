@@ -205,106 +205,6 @@
                 </div>
               </div>
             </Transition>
-
-            <Transition name="mobileMenu">
-              <div
-                v-if="isMobileMenuOpen"
-                class="md:hidden absolute top-[82px] left-0 right-0"
-              >
-                <div
-                  class="mx-2 rounded-3xl overflow-hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200 dark:border-slate-800 shadow-[0_20px_60px_rgba(0,0,0,0.12)]"
-                >
-                  <!-- Menu -->
-                  <div class="p-3 space-y-1">
-                    <NuxtLink
-                      to="/"
-                      @click="isMobileMenuOpen = false"
-                      class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800"
-                    >
-                      <Icon
-                        icon="solar:home-bold-duotone"
-                        class="w-5 h-5 text-emerald-500"
-                      />
-                      {{ t.home }}
-                    </NuxtLink>
-
-                    <NuxtLink
-                      to="/products"
-                      @click="isMobileMenuOpen = false"
-                      class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800"
-                    >
-                      <Icon
-                        icon="solar:box-bold-duotone"
-                        class="w-5 h-5 text-emerald-500"
-                      />
-                      {{ t.products }}
-                    </NuxtLink>
-
-                    <NuxtLink
-                      to="/blog"
-                      @click="isMobileMenuOpen = false"
-                      class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800"
-                    >
-                      <Icon
-                        icon="solar:document-text-bold-duotone"
-                        class="w-5 h-5 text-emerald-500"
-                      />
-                      {{ t.blog }}
-                    </NuxtLink>
-
-                    <NuxtLink
-                      to="/location"
-                      @click="isMobileMenuOpen = false"
-                      class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800"
-                    >
-                      <Icon
-                        icon="solar:map-point-bold-duotone"
-                        class="w-5 h-5 text-emerald-500"
-                      />
-                      {{ t.location }}
-                    </NuxtLink>
-
-                    <NuxtLink
-                      to="/contact"
-                      @click="isMobileMenuOpen = false"
-                      class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800"
-                    >
-                      <Icon
-                        icon="solar:phone-bold-duotone"
-                        class="w-5 h-5 text-emerald-500"
-                      />
-                      {{ t.contact }}
-                    </NuxtLink>
-                  </div>
-
-                  <!-- Footer Action -->
-                  <div
-                    class="border-t border-slate-200 dark:border-slate-800 p-3 flex gap-2"
-                  >
-                    <button
-                      @click="$emit('toggleLang')"
-                      class="flex-1 h-11 rounded-2xl border border-slate-200 dark:border-slate-700"
-                    >
-                      {{ lang === "id" ? "EN" : "ID" }}
-                    </button>
-
-                    <button
-                      @click="$emit('toggleDark')"
-                      class="w-11 rounded-2xl border border-slate-200 dark:border-slate-700 flex items-center justify-center"
-                    >
-                      <Icon
-                        :icon="
-                          isDark
-                            ? 'solar:sun-bold-duotone'
-                            : 'solar:moon-bold-duotone'
-                        "
-                        class="w-5 h-5"
-                      />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </Transition>
           </div>
 
           <NuxtLink to="/blog" class="hover:text-emerald-500 transition">
@@ -323,6 +223,105 @@
 
       <!-- Right Action -->
       <div class="flex items-center gap-3">
+        <Transition name="mobileMenu">
+          <div
+            v-if="isMobileMenuOpen"
+            class="md:hidden absolute top-[82px] left-0 right-0"
+          >
+            <div
+              class="mx-2 rounded-3xl overflow-hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200 dark:border-slate-800 shadow-[0_20px_60px_rgba(0,0,0,0.12)]"
+            >
+              <!-- Menu -->
+              <div class="p-3 space-y-1">
+                <NuxtLink
+                  to="/"
+                  @click="isMobileMenuOpen = false"
+                  class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800"
+                >
+                  <Icon
+                    icon="solar:home-bold-duotone"
+                    class="w-5 h-5 text-emerald-500"
+                  />
+                  {{ t.home }}
+                </NuxtLink>
+
+                <NuxtLink
+                  to="/products"
+                  @click="isMobileMenuOpen = false"
+                  class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800"
+                >
+                  <Icon
+                    icon="solar:box-bold-duotone"
+                    class="w-5 h-5 text-emerald-500"
+                  />
+                  {{ t.products }}
+                </NuxtLink>
+
+                <NuxtLink
+                  to="/blog"
+                  @click="isMobileMenuOpen = false"
+                  class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800"
+                >
+                  <Icon
+                    icon="solar:document-text-bold-duotone"
+                    class="w-5 h-5 text-emerald-500"
+                  />
+                  {{ t.blog }}
+                </NuxtLink>
+
+                <NuxtLink
+                  to="/location"
+                  @click="isMobileMenuOpen = false"
+                  class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800"
+                >
+                  <Icon
+                    icon="solar:map-point-bold-duotone"
+                    class="w-5 h-5 text-emerald-500"
+                  />
+                  {{ t.location }}
+                </NuxtLink>
+
+                <NuxtLink
+                  to="/contact"
+                  @click="isMobileMenuOpen = false"
+                  class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800"
+                >
+                  <Icon
+                    icon="solar:phone-bold-duotone"
+                    class="w-5 h-5 text-emerald-500"
+                  />
+                  {{ t.contact }}
+                </NuxtLink>
+              </div>
+
+              <!-- Footer Action -->
+              <div
+                class="border-t border-slate-200 dark:border-slate-800 p-3 flex gap-2"
+              >
+                <button
+                  @click="$emit('toggleLang')"
+                  class="flex-1 h-11 rounded-2xl border border-slate-200 dark:border-slate-700"
+                >
+                  {{ lang === "id" ? "EN" : "ID" }}
+                </button>
+
+                <button
+                  @click="$emit('toggleDark')"
+                  class="w-11 rounded-2xl border border-slate-200 dark:border-slate-700 flex items-center justify-center"
+                >
+                  <Icon
+                    :icon="
+                      isDark
+                        ? 'solar:sun-bold-duotone'
+                        : 'solar:moon-bold-duotone'
+                    "
+                    class="w-5 h-5"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </Transition>
         <button
           @click="$emit('toggleLang')"
           class="h-10 px-4 rounded-2xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-black"
@@ -337,6 +336,20 @@
           <Icon
             :icon="
               isDark ? 'solar:sun-bold-duotone' : 'solar:moon-bold-duotone'
+            "
+            class="w-5 h-5"
+          />
+        </button>
+
+        <button
+          @click="isMobileMenuOpen = !isMobileMenuOpen"
+          class="md:hidden h-10 w-10 rounded-2xl border border-slate-200 dark:border-slate-700 flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-800"
+        >
+          <Icon
+            :icon="
+              isMobileMenuOpen
+                ? 'solar:close-circle-bold-duotone'
+                : 'solar:hamburger-menu-bold-duotone'
             "
             class="w-5 h-5"
           />
