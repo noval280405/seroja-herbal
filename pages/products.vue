@@ -295,8 +295,8 @@ const availableSizes = [
   "550 gram",
   "473 ml",
   "360 gram",
-  "100 gram",
   "300 gram",
+  "100 gram",
   "90 tablet",
 ];
 
