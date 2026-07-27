@@ -303,7 +303,7 @@
       <Transition name="mobileMenu">
         <div
           v-if="isMobileMenuOpen"
-          class="md:hidden absolute top-[112px] left-0 right-0 p-3 bg-white/95 dark:bg-slate-950/95 backdrop-blur-3xl border-b border-slate-200 dark:border-slate-800 shadow-xl"
+          class="md:hidden absolute top-full left-0 right-0 p-3 bg-white/95 dark:bg-slate-950/95 backdrop-blur-3xl border-b border-slate-200 dark:border-slate-800 shadow-xl"
         >
           <div class="space-y-1 text-sm font-semibold">
             <NuxtLink
